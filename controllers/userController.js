@@ -9,40 +9,28 @@ exports.getAllUsers = (req, res) => {
 
 exports.createUser = (req, res) => {
   res.status(500).json({
-    stauts: 'success',
-    users: users.length,
-    data: {
-      users,
-    },
+    stauts: 'error',
+    message: 'this route not defined yet!',
   });
 };
 
 exports.getUser = (req, res) => {
   res.status(500).json({
-    stauts: 'success',
-    users: users.length,
-    data: {
-      users,
-    },
+    stauts: 'error',
+    message: 'this route not defined yet!',
   });
 };
 
 exports.updateUser = (req, res) => {
   res.status(500).json({
-    stauts: 'success',
-    users: users.length,
-    data: {
-      users,
-    },
+    stauts: 'error',
+    message: 'this route not defined yet!',
   });
 };
 
 exports.deleteUser = (req, res) => {
   res.status(500).json({
-    stauts: 'success',
-    users: users.length,
-    data: {
-      users,
-    },
+    stauts: 'error',
+    message: 'this route not defined yet!',
   });
 };
