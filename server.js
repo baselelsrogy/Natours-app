@@ -5,7 +5,6 @@ const app = require('./app');
 
 const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 console.log(process.env.DATABASE);
-console.log(DB);
 
 mongoose
   .connect(DB, {
@@ -14,7 +13,8 @@ mongoose
     useFindAndModify: false,
     useUnifiedTopology: true,
   })
-  .then((con) => console.log(process.env.DATABASE, 'DB connention successful'));
+  .then((con) => console.log('DB connention successful'));
+
 // Start Server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
