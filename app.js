@@ -1,3 +1,4 @@
+const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const morgan = require('morgan');
@@ -13,7 +14,13 @@ const xssClean = require('xss-clean');
 const hpp = require('hpp');
 
 const app = express();
+
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 // Middlewares
+// serving static files
+app.use(express.static(path.join(__dirname, 'public')));
 // set security http headers
 app.use(helmet());
 
@@ -46,9 +53,6 @@ app.use(
   })
 );
 
-// serving static files
-app.use(express.static(`${__dirname}/public`));
-
 // test middleware
 app.use((req, res, next) => {
   console.log('Hello from the middleware');
@@ -60,6 +64,10 @@ app.use((req, res, next) => {
 });
 
 // Routes
+app.get('/', (req, res) => {
+  res.status(200).render('base');
+});
+
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRoutre);
