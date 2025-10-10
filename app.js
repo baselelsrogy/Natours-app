@@ -6,7 +6,8 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoute');
 const userRouter = require('./routes/userRoute');
-const reviewRoutre = require('./routes/reviewRoute');
+const reviewRouter = require('./routes/reviewRoute');
+const viewRouter = require('./routes/viewRouter');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSnitize = require('express-mongo-sanitize');
@@ -64,13 +65,11 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.get('/', (req, res) => {
-  res.status(200).render('base');
-});
-
+app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/reviews', reviewRoutre);
+app.use('/api/v1/reviews', reviewRouter);
+
 // Error Handling
 app.all('*', (req, res, next) => {
   const mainError = new AppError(`Can't find ${req.originalUrl} on this server!`);
