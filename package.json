@@ -3,15 +3,23 @@
   "version": "1.0.0",
   "description": "Learning node.js and mongoDB",
   "main": "app.js",
+  "targets": {
+    "main": false
+  },
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "cross-env NODE_ENV=production nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch --no-hmr ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "Basel Elsrogy",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.2",
     "express": "^4.21.2",
     "express-mongo-sanitize": "^2.2.0",
@@ -28,6 +36,9 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
-    "cross-env": "^10.0.0"
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^10.0.0",
+    "parcel-bundler": "^1.12.5"
   }
 }
