@@ -9,4 +9,6 @@ router.get('/tour/:slug', authController.isLoggedIn, viewsController.getTour);
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 router.get('/me', authController.protect, viewsController.getAccount);
 
+router.post('/sumbit-user-data', authController.protect, viewsController.updateUserData);
+
 module.exports = router;
