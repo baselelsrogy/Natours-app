@@ -19,7 +19,13 @@ router
 router
   .route('/:id')
   .get(tourController.getTour)
-  .patch(authController.protect, authController.restrictTo('admin', 'lead-guide'), tourController.updateTour)
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin', 'lead-guide'),
+    tourController.uploadTourImages,
+    tourController.resizeTourImages,
+    tourController.updateTour
+  )
   .delete(authController.protect, authController.restrictTo('admin', 'lead-guide'), tourController.deleteTour);
 router
   .route('/monthly-plan/:year')
